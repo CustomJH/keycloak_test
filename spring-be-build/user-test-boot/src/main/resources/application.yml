@@ -1,0 +1,96 @@
+spring:
+  application:
+    name: user-test
+  
+  # MariaDB Database Configuration (Port 18300)
+  datasource:
+    hikari:
+      jdbc-url: jdbc:mariadb://localhost:18300/usertest_db?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Seoul
+      username: root
+      password: root
+      driver-class-name: org.mariadb.jdbc.Driver
+      connection-timeout: 20000
+      maximum-pool-size: 10
+      minimum-idle: 5
+      idle-timeout: 300000
+      max-lifetime: 1200000
+  
+  # JPA/Hibernate Configuration
+  jpa:
+    hibernate:
+      ddl-auto: validate  # Change to 'create' or 'update' for development
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MariaDBDialect
+        format_sql: true
+
+  # Spring Security OAuth2 Resource Server Configuration for JWT
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:18200/realms/spring-app-realm
+          jwk-set-uri: http://localhost:18200/realms/spring-app-realm/protocol/openid-connect/certs
+
+# MyBatis Configuration
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+    default-fetch-size: 100
+    default-statement-timeout: 30
+  type-aliases-package: com.example.usertest.domain
+
+# Application Properties
+package: com.example.usertest
+api:
+  prefix: /api/v1
+
+# Server Configuration
+server:
+  port: 8080
+  servlet:
+    context-path: /
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+# Logging Configuration
+logging:
+  level:
+    com.example.usertest: DEBUG
+    org.springframework.security: DEBUG
+    org.apache.ibatis: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+
+# Actuator Configuration
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: when-authorized
+
+# Swagger/OpenAPI Configuration
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operationsSorter: method
+
+# Keycloak Configuration (Port 18200)
+keycloak:
+  server-url: http://localhost:18200
+  realm: spring-app-realm
+  client-id: spring-backend-client
+  client-secret: spring-backend-secret
+  admin:
+    username: admin
+    password: admin!34
+  token-endpoint: ${keycloak.server-url}/realms/${keycloak.realm}/protocol/openid-connect/token

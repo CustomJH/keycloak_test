@@ -1,0 +1,8 @@
+dependencies {
+    api project(':user-test-domain')
+    
+    implementation "org.mybatis.spring.boot:mybatis-spring-boot-starter:${mybatisStarterVersion}"
+    implementation 'org.mariadb.jdbc:mariadb-java-client'
+    
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+}

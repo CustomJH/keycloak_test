@@ -1,0 +1,6 @@
+rootProject.name = 'user-test'
+
+include 'user-test-boot'
+include 'user-test-api'
+include 'user-test-store'
+include 'user-test-domain'
