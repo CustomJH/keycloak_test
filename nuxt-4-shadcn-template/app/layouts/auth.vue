@@ -16,37 +16,15 @@
             <span class="text-xl font-semibold">{{ $t('common.appName', 'TossStyle') }}</span>
           </div>
 
-          <!-- Main Content -->
+          <!-- Main Content - Simplified for login test -->
           <div class="space-y-8">
             <div>
               <h1 class="text-4xl font-bold leading-tight">
-                {{ $t('auth.brandTitle', '금융의 모든 것을\n하나의 앱에서') }}
+                간편한 로그인
               </h1>
               <p class="text-blue-100 text-lg mt-4 leading-relaxed">
-                {{ $t('auth.brandSubtitle', '간편하고 안전한 디지털 금융 서비스를 경험해보세요') }}
+                안전하고 빠른 인증 서비스
               </p>
-            </div>
-
-            <!-- Features -->
-            <div class="space-y-4">
-              <div class="flex items-center space-x-3">
-                <div class="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center">
-                  <component :is="CheckIcon" class="w-4 h-4" />
-                </div>
-                <span>{{ $t('auth.feature1', '생체 인증으로 간편 로그인') }}</span>
-              </div>
-              <div class="flex items-center space-x-3">
-                <div class="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center">
-                  <component :is="CheckIcon" class="w-4 h-4" />
-                </div>
-                <span>{{ $t('auth.feature2', '은행 수준의 보안 시스템') }}</span>
-              </div>
-              <div class="flex items-center space-x-3">
-                <div class="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center">
-                  <component :is="CheckIcon" class="w-4 h-4" />
-                </div>
-                <span>{{ $t('auth.feature3', '24/7 고객 지원 서비스') }}</span>
-              </div>
             </div>
           </div>
 
@@ -85,17 +63,9 @@
             <slot />
           </div>
 
-          <!-- Help Links -->
-          <div class="mt-6 text-center space-x-6 text-sm">
-            <NuxtLink to="/help" class="text-gray-500 hover:text-blue-600 transition-colors">
-              {{ $t('common.help', '도움말') }}
-            </NuxtLink>
-            <NuxtLink to="/privacy" class="text-gray-500 hover:text-blue-600 transition-colors">
-              {{ $t('common.privacy', '개인정보처리방침') }}
-            </NuxtLink>
-            <NuxtLink to="/terms" class="text-gray-500 hover:text-blue-600 transition-colors">
-              {{ $t('common.terms', '이용약관') }}
-            </NuxtLink>
+          <!-- Simplified footer - removed help links for basic login test -->
+          <div class="mt-6 text-center text-sm text-gray-500">
+            <p>간단한 로그인 테스트</p>
           </div>
         </div>
       </div>

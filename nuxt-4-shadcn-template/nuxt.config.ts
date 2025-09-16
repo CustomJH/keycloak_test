@@ -1,14 +1,16 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import tailwindcss from '@tailwindcss/postcss'
+import autoprefixer from 'autoprefixer'
+
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
-  devtools: { enabled: true },
+  devtools: { enabled: false },
 
   // CSS configuration
   css: ['~/assets/css/tailwind.css'],
 
   // Modules
   modules: [
-    '@nuxtjs/tailwindcss',
     '@vueuse/nuxt',
     '@nuxtjs/i18n'
   ],
@@ -40,7 +42,7 @@ export default defineNuxtConfig({
     ],
     defaultLocale: 'ko',
     strategy: 'prefix_except_default',
-    langDir: 'locales/',
+    langDir: './locales',
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: 'i18n_redirected',
@@ -75,6 +77,64 @@ export default defineNuxtConfig({
     // Public keys (exposed to client-side)
     public: {
       apiBase: process.env.API_BASE_URL || '/api'
+    }
+  },
+
+  // Vite configuration to prevent file watching issues
+  vite: {
+    server: {
+      watch: {
+        usePolling: true,
+        interval: 1000,
+        ignored: [
+          '**/node_modules/**',
+          '**/.git/**',
+          '**/dist/**',
+          '**/.nuxt/**',
+          '**/.output/**',
+          '**/coverage/**',
+          '**/tmp/**',
+          '**/.tmp/**',
+          '**/.cache/**',
+          '**/.pnpm-store/**',
+          '**/pnpm-lock.yaml',
+          '**/package-lock.json',
+          '**/yarn.lock'
+        ]
+      }
+    },
+    optimizeDeps: {
+      exclude: ['fsevents']
+    },
+    css: {
+      postcss: {
+        plugins: [
+          tailwindcss,
+          autoprefixer,
+        ],
+      },
+    },
+  },
+
+  // Development optimization
+  devServer: {
+    host: 'localhost',
+    port: 3000
+  },
+
+  // Nitro configuration for development
+  nitro: {
+    storage: {
+      redis: {
+        driver: 'fs',
+        base: './.data/db'
+      }
+    },
+    devStorage: {
+      redis: {
+        driver: 'fs',
+        base: './.data/db'
+      }
     }
   }
 })
