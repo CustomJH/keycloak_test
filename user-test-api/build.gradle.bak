@@ -15,7 +15,4 @@ dependencies {
     // HTTP Client for Keycloak integration
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
     implementation 'org.springframework.boot:spring-boot-configuration-processor'
-    
-    // OAuth2 Resource Server for JWT authentication
-    implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
 }

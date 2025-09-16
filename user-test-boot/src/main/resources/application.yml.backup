@@ -25,14 +25,6 @@ spring:
         dialect: org.hibernate.dialect.MariaDBDialect
         format_sql: true
 
-  # Spring Security OAuth2 Resource Server Configuration for JWT
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: http://localhost:18200/realms/spring-app-realm
-          jwk-set-uri: http://localhost:18200/realms/spring-app-realm/protocol/openid-connect/certs
-
 # MyBatis Configuration
 mybatis:
   configuration:
@@ -87,10 +79,10 @@ springdoc:
 # Keycloak Configuration (Port 18200)
 keycloak:
   server-url: http://localhost:18200
-  realm: spring-app-realm
-  client-id: spring-backend-client
-  client-secret: spring-backend-secret
+  realm: master
+  client-id: user-test-client
+  client-secret: your-client-secret
   admin:
     username: admin
-    password: admin!34
+    password: admin
   token-endpoint: ${keycloak.server-url}/realms/${keycloak.realm}/protocol/openid-connect/token
