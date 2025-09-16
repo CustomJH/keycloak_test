@@ -30,17 +30,17 @@ services:
     image: quay.io/keycloak/keycloak:24.0
     container_name: keycloak
     restart: unless-stopped
-    command: start
+    command: start-dev
     environment:
       # Database configuration
-      KC_DB: mysql
-      KC_DB_URL: jdbc:mysql://mariadb:3306/keycloak
+      KC_DB: mariadb
+      KC_DB_URL: jdbc:mariadb://mariadb:3306/keycloak?characterEncoding=UTF-8
       KC_DB_USERNAME: admin
       KC_DB_PASSWORD: admin!34
       
       # Admin user configuration
-      KC_BOOTSTRAP_ADMIN_USERNAME: admin
-      KC_BOOTSTRAP_ADMIN_PASSWORD: admin!34
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin!34
       
       # Server configuration
       KC_HOSTNAME: localhost
@@ -54,6 +54,9 @@ services:
       KC_HEALTH_ENABLED: true
       KC_METRICS_ENABLED: true
       KC_LOG_LEVEL: INFO
+      
+      # Database migration settings
+      KC_TRANSACTION_XA_ENABLED: false
       
       # Cache configuration
       KC_CACHE: ispn
