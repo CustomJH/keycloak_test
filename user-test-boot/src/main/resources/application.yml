@@ -1,0 +1,73 @@
+spring:
+  application:
+    name: user-test
+  
+  # MariaDB Database Configuration (Empty - Please configure before use)
+  datasource:
+    hikari:
+      # jdbc-url: jdbc:mariadb://localhost:3306/usertest_db
+      # username: your_username
+      # password: your_password
+      # driver-class-name: org.mariadb.jdbc.Driver
+      connection-timeout: 20000
+      maximum-pool-size: 10
+      minimum-idle: 5
+      idle-timeout: 300000
+      max-lifetime: 1200000
+  
+  # JPA/Hibernate Configuration
+  jpa:
+    hibernate:
+      ddl-auto: validate  # Change to 'create' or 'update' for development
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MariaDBDialect
+        format_sql: true
+
+# MyBatis Configuration
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+    default-fetch-size: 100
+    default-statement-timeout: 30
+  type-aliases-package: com.example.usertest.domain
+
+# Application Properties
+package: com.example.usertest
+api:
+  prefix: /api/v1
+
+# Server Configuration
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+# Logging Configuration
+logging:
+  level:
+    com.example.usertest: DEBUG
+    org.springframework.security: DEBUG
+    org.apache.ibatis: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+
+# Actuator Configuration
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: when-authorized
+
+# Swagger/OpenAPI Configuration
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operationsSorter: method
