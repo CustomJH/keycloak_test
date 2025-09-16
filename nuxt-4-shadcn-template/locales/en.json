@@ -1,0 +1,89 @@
+{
+  "common": {
+    "or": "or",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "save": "Save",
+    "appName": "TossStyle",
+    "help": "Help",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "allRightsReserved": "All rights reserved"
+  },
+  "home": {
+    "welcome": "Welcome!",
+    "loggedInMessage": "You have successfully signed in.",
+    "guestWelcome": "Welcome to TossStyle",
+    "guestMessage": "Sign in to access more features.",
+    "feature1Title": "Easy Payments",
+    "feature1Desc": "Fast and secure payment experience",
+    "feature2Title": "Asset Management",
+    "feature2Desc": "Smart budgeting and investment management",
+    "feature3Title": "Security Guaranteed",
+    "feature3Desc": "Bank-level security system"
+  },
+  "auth": {
+    "welcome": "Welcome",
+    "welcomeMessage": "Sign in to your account",
+    "login": "Sign In",
+    "logout": "Sign Out",
+    "register": "Sign Up",
+    "email": "Email",
+    "phone": "Phone",
+    "emailOrPhone": "Email or Phone",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot password?",
+    "createAccount": "Create account",
+    "alreadyHaveAccount": "Already have an account?",
+    "dontHaveAccount": "Don't have an account?",
+    "loginWithBiometric": "Sign in with biometric",
+    "useFingerprint": "Use Fingerprint",
+    "useFaceId": "Use Face ID",
+    "loginSuccess": "Successfully signed in",
+    "loginFailed": "Sign in failed",
+    "invalidCredentials": "Invalid email or password",
+    "accountLocked": "Account is locked",
+    "tooManyAttempts": "Too many login attempts. Please try again later"
+  },
+  "validation": {
+    "required": "{field} is required",
+    "email": "Please enter a valid email address",
+    "minLength": "{field} must be at least {min} characters",
+    "maxLength": "{field} must be no more than {max} characters",
+    "passwordMismatch": "Passwords do not match",
+    "invalidPhone": "Please enter a valid phone number",
+    "weakPassword": "Password is too weak"
+  },
+  "otp": {
+    "title": "Enter verification code",
+    "description": "Enter the 6-digit code sent to {phone}",
+    "resend": "Resend",
+    "resendIn": "Resend available in {seconds} seconds",
+    "verify": "Verify",
+    "invalidCode": "Invalid verification code",
+    "expired": "Verification code has expired",
+    "sent": "Verification code sent"
+  },
+  "social": {
+    "loginWith": "Sign in with {provider}",
+    "google": "Google",
+    "apple": "Apple",
+    "kakao": "Kakao",
+    "naver": "Naver"
+  },
+  "errors": {
+    "networkError": "Please check your network connection",
+    "serverError": "Server error occurred",
+    "unknownError": "An unknown error occurred",
+    "sessionExpired": "Session has expired. Please sign in again"
+  }
+}
