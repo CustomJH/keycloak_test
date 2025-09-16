@@ -9,16 +9,28 @@ export default defineNuxtConfig({
   // Modules
   modules: [
     '@nuxtjs/tailwindcss',
-    'shadcn-nuxt',
     '@vueuse/nuxt',
     '@nuxtjs/i18n'
   ],
 
-  // shadcn-nuxt configuration
-  shadcn: {
-    prefix: '',
-    componentDir: './app/components/ui'
-  },
+  // Components configuration
+  components: [
+    {
+      path: '~/components/ui',
+      extensions: ['.vue'],
+      pathPrefix: false,
+    },
+    {
+      path: '~/components/toss',
+      extensions: ['.vue'],
+      pathPrefix: false,
+    },
+    {
+      path: '~/components',
+      extensions: ['.vue'],
+      pathPrefix: false,
+    },
+  ],
 
   // Internationalization configuration
   i18n: {
