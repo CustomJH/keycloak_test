@@ -1,3 +1,5 @@
+import org.springframework.boot.gradle.plugin.SpringBootPlugin
+
 plugins {
     id 'java'
     id 'org.springframework.boot' version '3.2.4' apply false
@@ -22,6 +24,10 @@ subprojects {
     compileTestJava.options.encoding = 'UTF-8'
     javadoc.options.encoding = 'UTF-8'
     
+    // Enable parameter names for @PathVariable and @RequestParam
+    compileJava.options.compilerArgs += ['-parameters']
+    compileTestJava.options.compilerArgs += ['-parameters']
+    
     java {
         toolchain {
             languageVersion = JavaLanguageVersion.of(21)
@@ -36,7 +42,7 @@ subprojects {
     
     dependencyManagement {
         imports {
-            mavenBom org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
+            mavenBom SpringBootPlugin.BOM_COORDINATES
         }
     }
     

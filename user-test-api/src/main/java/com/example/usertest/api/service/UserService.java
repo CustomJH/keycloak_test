@@ -2,7 +2,6 @@ package com.example.usertest.api.service;
 
 import com.example.usertest.domain.User;
 import com.example.usertest.domain.dto.UserDto;
-import com.example.usertest.domain.exception.UserNotFoundException;
 import com.example.usertest.store.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
 
-//@Service
+@Service
 @RequiredArgsConstructor
 @Slf4j
 @Transactional(readOnly = true)

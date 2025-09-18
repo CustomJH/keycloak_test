@@ -23,4 +23,9 @@ public class WebClientConfig {
                     configurer.defaultCodecs().enableLoggingRequestDetails(true);
                 });
     }
+    
+    @Bean
+    public WebClient webClient(WebClient.Builder webClientBuilder) {
+        return webClientBuilder.build();
+    }
 }

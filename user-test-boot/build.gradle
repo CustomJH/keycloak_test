@@ -8,6 +8,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     
+    // MyBatis for @MapperScan annotation
+    implementation "org.mybatis.spring.boot:mybatis-spring-boot-starter:${mybatisStarterVersion}"
+    
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
 }
 

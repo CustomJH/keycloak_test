@@ -4,11 +4,11 @@ spring:
   
   # MariaDB Database Configuration (Port 18300)
   datasource:
+    url: jdbc:mariadb://localhost:18300/usertest_db?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Seoul
+    username: root
+    password: root
+    driver-class-name: org.mariadb.jdbc.Driver
     hikari:
-      jdbc-url: jdbc:mariadb://localhost:18300/usertest_db?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Seoul
-      username: root
-      password: root
-      driver-class-name: org.mariadb.jdbc.Driver
       connection-timeout: 20000
       maximum-pool-size: 10
       minimum-idle: 5
@@ -30,8 +30,8 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:18200/realms/spring-app-realm
-          jwk-set-uri: http://localhost:18200/realms/spring-app-realm/protocol/openid-connect/certs
+          issuer-uri: http://localhost:18200/realms/yun_token_test
+          jwk-set-uri: http://localhost:18200/realms/yun_token_test/protocol/openid-connect/certs
 
 # MyBatis Configuration
 mybatis:
@@ -40,6 +40,7 @@ mybatis:
     default-fetch-size: 100
     default-statement-timeout: 30
   type-aliases-package: com.example.usertest.domain
+  mapper-locations: classpath:mapper/*.xml
 
 # Application Properties
 package: com.example.usertest
@@ -87,10 +88,10 @@ springdoc:
 # Keycloak Configuration (Port 18200)
 keycloak:
   server-url: http://localhost:18200
-  realm: spring-app-realm
-  client-id: spring-backend-client
-  client-secret: spring-backend-secret
+  realm: yun_token_test
+  client-id: ${KEYCLOAK_CLIENT_ID:spring-backend-client}
+  client-secret: ${KEYCLOAK_CLIENT_SECRET:ZhRktmKlGbpHZE325BFsGOYoikIPXhqa}
   admin:
     username: admin
-    password: admin!34
+    password: admin
   token-endpoint: ${keycloak.server-url}/realms/${keycloak.realm}/protocol/openid-connect/token

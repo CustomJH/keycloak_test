@@ -3,44 +3,79 @@ package com.example.usertest.store.mapper;
 import com.example.usertest.domain.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Update;
-import org.apache.ibatis.annotations.Delete;
 
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * 사용자 데이터 접근을 위한 MyBatis 매퍼 인터페이스
+ * 
+ * XML 매퍼 파일을 통해 SQL 쿼리가 정의됩니다.
+ * 매퍼 XML 파일: resources/mapper/UserMapper.xml
+ * 
+ * @author YourName
+ * @version 1.0
+ * @since 2024-09
+ */
 @Mapper
 public interface UserMapper {
     
-    @Select("SELECT * FROM users WHERE id = #{id}")
+    /**
+     * ID로 사용자 조회
+     * @param id 사용자 ID
+     * @return 사용자 정보 (Optional)
+     */
     Optional<User> findById(@Param("id") Long id);
     
-    @Select("SELECT * FROM users WHERE username = #{username}")
+    /**
+     * 사용자명으로 사용자 조회
+     * @param username 사용자명
+     * @return 사용자 정보 (Optional)
+     */
     Optional<User> findByUsername(@Param("username") String username);
     
-    @Select("SELECT * FROM users WHERE email = #{email}")
+    /**
+     * 이메일로 사용자 조회
+     * @param email 이메일 주소
+     * @return 사용자 정보 (Optional)
+     */
     Optional<User> findByEmail(@Param("email") String email);
     
-    @Select("SELECT * FROM users ORDER BY created_at DESC")
+    /**
+     * 모든 사용자 조회 (생성일 기준 내림차순)
+     * @return 사용자 목록
+     */
     List<User> findAll();
     
-    @Insert("INSERT INTO users (username, email, password, role, enabled, created_at, updated_at) " +
-            "VALUES (#{username}, #{email}, #{password}, #{role}, #{enabled}, NOW(), NOW())")
+    /**
+     * 사용자 신규 등록
+     * @param user 등록할 사용자 정보
+     */
     void insert(User user);
     
-    @Update("UPDATE users SET username = #{username}, email = #{email}, " +
-            "password = #{password}, role = #{role}, enabled = #{enabled}, updated_at = NOW() " +
-            "WHERE id = #{id}")
+    /**
+     * 사용자 정보 수정
+     * @param user 수정할 사용자 정보
+     */
     void update(User user);
     
-    @Delete("DELETE FROM users WHERE id = #{id}")
+    /**
+     * ID로 사용자 삭제
+     * @param id 삭제할 사용자 ID
+     */
     void deleteById(@Param("id") Long id);
     
-    @Select("SELECT COUNT(*) FROM users WHERE username = #{username}")
+    /**
+     * 사용자명 중복 확인
+     * @param username 확인할 사용자명
+     * @return 중복 여부 (true: 존재, false: 사용가능)
+     */
     boolean existsByUsername(@Param("username") String username);
     
-    @Select("SELECT COUNT(*) FROM users WHERE email = #{email}")
+    /**
+     * 이메일 중복 확인
+     * @param email 확인할 이메일 주소
+     * @return 중복 여부 (true: 존재, false: 사용가능)
+     */
     boolean existsByEmail(@Param("email") String email);
 }

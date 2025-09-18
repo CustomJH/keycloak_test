@@ -34,6 +34,9 @@ public class SecurityConfig {
                 .requestMatchers("/actuator/**").permitAll()
                 .requestMatchers("/api/v1/auth/**").permitAll() // Allow auth endpoints
                 .requestMatchers("/api/v1/public/**").permitAll() // Allow public endpoints
+                .requestMatchers("/api/v1/users/create", "/api/v1/users/create-pulsar-system").permitAll() // Allow user creation
+                .requestMatchers("/api/v1/users/admin/health").permitAll() // Allow admin health check
+                .requestMatchers("/api/v1/roles/**").permitAll() // Allow role management endpoints
                 
                 // Role-based access control
                 .requestMatchers("/api/v1/user/**").hasRole("USER")

@@ -18,6 +18,7 @@ public class User {
     private String password;
     private String role;
     private boolean enabled;
+    private String keycloakUserId; // Keycloak 서버에서 생성된 사용자 고유 ID
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }
